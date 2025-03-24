@@ -3,7 +3,7 @@ import { t } from "@/i18n";
 import { locale } from "@/infra/locale";
 import { timezone } from "@/infra/time";
 
-const formatStyles: Record<string, Intl.DateTimeFormatOptions> = {
+let formatStyles: Record<string, Intl.DateTimeFormatOptions> = {
   time: {
     timeStyle: "short",
   },
@@ -21,9 +21,9 @@ const formatStyles: Record<string, Intl.DateTimeFormatOptions> = {
   },
 };
 
-const formatterCache: Record<string, Intl.DateTimeFormat> = {};
+let formatterCache: Record<string, Intl.DateTimeFormat> = {};
 
-const getFormatter = (style: string): Intl.DateTimeFormat => {
+let getFormatter = (style: string): Intl.DateTimeFormat => {
   if (formatterCache[style]) {
     return formatterCache[style];
   }
@@ -35,12 +35,12 @@ const getFormatter = (style: string): Intl.DateTimeFormat => {
   return formatterCache[style];
 };
 
-export const formatDueDate = (dueDate: DueDate): string => {
-  const date = formatDate(dueDate);
+export let formatDueDate = (dueDate: DueDate): string => {
+  let date = formatDate(dueDate);
 
   if (dueDate.hasTime()) {
-    const i18n = t().dates;
-    const time = dueDate.format(getFormatter("time"));
+    let i18n = t().dates;
+    let time = dueDate.format(getFormatter("time"));
 
     return i18n.dateTime(date, time);
   }
@@ -48,8 +48,8 @@ export const formatDueDate = (dueDate: DueDate): string => {
   return date;
 };
 
-const formatDate = (dueDate: DueDate): string => {
-  const i18n = t().dates;
+let formatDate = (dueDate: DueDate): string => {
+  let i18n = t().dates;
 
   if (dueDate.isToday()) {
     return i18n.today;
@@ -78,13 +78,13 @@ const formatDate = (dueDate: DueDate): string => {
   return dueDate.format(getFormatter("date"));
 };
 
-export const formatAsHeader = (dueDate: DueDate): string => {
-  const formatParts: string[] = [
+export let formatAsHeader = (dueDate: DueDate): string => {
+  let formatParts: string[] = [
     dueDate.format(getFormatter("date")),
     dueDate.format(getFormatter("weekday")),
   ];
 
-  const i18n = t().dates;
+  let i18n = t().dates;
 
   if (dueDate.isToday()) {
     formatParts.push(i18n.today);
