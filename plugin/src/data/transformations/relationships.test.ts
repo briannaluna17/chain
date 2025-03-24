@@ -34,7 +34,7 @@ describe("buildTaskTree", () => {
     output: TaskTree[];
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "tasks without children should have no children",
       input: [makeTask("a"), makeTask("b"), makeTask("c")],
@@ -99,9 +99,9 @@ describe("buildTaskTree", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     it(tc.description, () => {
-      const trees = buildTaskTree(tc.input);
+      let trees = buildTaskTree(tc.input);
       expect(trees).toStrictEqual(tc.output);
     });
   }
