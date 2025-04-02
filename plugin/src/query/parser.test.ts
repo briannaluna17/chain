@@ -8,7 +8,7 @@ describe("parseQuery - rejections", () => {
     input: unknown;
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "name must be a string",
       input: {
@@ -109,7 +109,7 @@ describe("parseQuery - rejections", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     it(tc.description, () => {
       expect(() => {
         parseQuery(JSON.stringify(tc.input));
@@ -143,7 +143,7 @@ describe("parseQuery", () => {
     expectedOutput: Query;
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "only filter",
       input: {
@@ -221,9 +221,9 @@ describe("parseQuery", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     it(tc.description, () => {
-      const [output, _] = parseQuery(JSON.stringify(tc.input));
+      let [output, _] = parseQuery(JSON.stringify(tc.input));
       expect(output).toStrictEqual(tc.expectedOutput);
     });
   }
@@ -236,7 +236,7 @@ describe("parseQuery - warnings", () => {
     expectedWarnings: QueryWarning[];
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "JSON input format",
       input: {
@@ -260,9 +260,9 @@ describe("parseQuery - warnings", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     it(tc.description, () => {
-      const [_, warnings] = parseQuery(JSON.stringify(tc.input));
+      let [_, warnings] = parseQuery(JSON.stringify(tc.input));
       expect(warnings).toStrictEqual(tc.expectedWarnings);
     });
   }
