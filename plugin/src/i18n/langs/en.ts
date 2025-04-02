@@ -1,6 +1,6 @@
 import type { Translations } from "@/i18n/translation";
 
-export const en: Translations = {
+export let en: Translations = {
   settings: {
     general: {
       header: "General",
