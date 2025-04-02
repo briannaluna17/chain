@@ -6,7 +6,7 @@ export class Maybe<T> {
   }
 
   static Some<T>(val: T): Maybe<T> {
-    const maybe = new Maybe<T>();
+    let maybe = new Maybe<T>();
     maybe.value = val;
     return maybe;
   }
