@@ -24,7 +24,7 @@ describe("formatDueDate", () => {
     expected: string;
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "Today, no time",
       dueDate: new DueDate({
@@ -163,9 +163,9 @@ describe("formatDueDate", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     test(tc.description, () => {
-      const actual = formatDueDate(tc.dueDate);
+      let actual = formatDueDate(tc.dueDate);
       expect(actual).toBe(tc.expected);
     });
   }
@@ -178,7 +178,7 @@ describe("formatAsHeader", () => {
     expected: string;
   };
 
-  const testcases: Testcase[] = [
+  let testcases: Testcase[] = [
     {
       description: "Today",
       dueDate: new DueDate({
@@ -205,9 +205,9 @@ describe("formatAsHeader", () => {
     },
   ];
 
-  for (const tc of testcases) {
+  for (let tc of testcases) {
     test(tc.description, () => {
-      const actual = formatAsHeader(tc.dueDate);
+      let actual = formatAsHeader(tc.dueDate);
       expect(actual).toBe(tc.expected);
     });
   }
