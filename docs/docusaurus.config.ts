@@ -2,11 +2,11 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
-const title = "Sync with Todoist Plugin";
-const org = "jamiebrynes7";
-const project = "obsidian-todoist-plugin";
+let title = "Sync with Todoist Plugin";
+let org = "jamiebrynes7";
+let project = "obsidian-todoist-plugin";
 
-const config: Config = {
+let config: Config = {
   title: title,
   favicon: "img/favicon.ico",
 
