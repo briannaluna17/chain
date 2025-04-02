@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export type AddPageLinkSetting = "off" | "description" | "content";
 
-const defaultSettings: Settings = {
+let defaultSettings: Settings = {
   fadeToggle: true,
 
   autoRefreshToggle: false,
@@ -35,6 +35,6 @@ export type Settings = {
   debugLogging: boolean;
 };
 
-export const useSettingsStore = create<Settings>((set) => ({
+export let useSettingsStore = create<Settings>((set) => ({
   ...defaultSettings,
 }));
