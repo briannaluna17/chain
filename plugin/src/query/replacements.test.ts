@@ -32,7 +32,7 @@ type TestCase = {
 
 describe("applyReplacements", () => {
   describe("{{filename}}", () => {
-    const testcases: TestCase[] = [
+    let testcases: TestCase[] = [
       {
         description: "should not modify filter if '{{filename}}' not present",
         filter: "#Project & /section",
@@ -52,9 +52,9 @@ describe("applyReplacements", () => {
       },
     ];
 
-    for (const tc of testcases) {
+    for (let tc of testcases) {
       it(tc.description, () => {
-        const query: Query = {
+        let query: Query = {
           name: "",
           filter: tc.filter,
           autorefresh: 0,
