@@ -32,7 +32,7 @@ export class DueDate {
   }
 
   isToday(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.compare(today()) === 0;
   }
 
@@ -45,27 +45,27 @@ export class DueDate {
   }
 
   isTomorrow(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.compare(today().add({ days: 1 })) === 0;
   }
 
   isYesterday(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.compare(today().add({ days: -1 })) === 0;
   }
 
   isInLastWeek(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.compare(today().add({ days: -7 })) >= 0 && date.compare(today()) < 0;
   }
 
   isInNextWeek(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.compare(today().add({ days: 7 })) <= 0 && date.compare(today()) > 0;
   }
 
   isCurrentYear(): boolean {
-    const date = this.calendarDate();
+    let date = this.calendarDate();
     return date.year === today().year;
   }
 
@@ -74,9 +74,9 @@ export class DueDate {
   }
 
   compareDate(other: DueDate): -1 | 0 | 1 {
-    const thisDate = this.calendarDate();
-    const otherDate = other.calendarDate();
-    const cmp = thisDate.compare(otherDate);
+    let thisDate = this.calendarDate();
+    let otherDate = other.calendarDate();
+    let cmp = thisDate.compare(otherDate);
 
     if (cmp === 0) {
       return 0;
@@ -94,7 +94,7 @@ export class DueDate {
       throw new Error("Called compareDateTime on due dates without time");
     }
 
-    const cmp = this.inner.compare(other.inner);
+    let cmp = this.inner.compare(other.inner);
     if (cmp === 0) {
       return 0;
     }
